@@ -113,11 +113,11 @@ vector<Cell> solve(vector<vector<char>>& grid, Cell start, Cell goal){
 
   while (!pq.empty()) {
 
-    auto top   = pq.top();
+    auto top = pq.top();
     pq.pop();
 
     int curCost = top.first;
-    Cell cur    = top.second;
+    Cell cur = top.second;
 
     if (curCost > dist[cur]) continue;
       visited.push_back(cur);
@@ -130,12 +130,12 @@ vector<Cell> solve(vector<vector<char>>& grid, Cell start, Cell goal){
         if (!inBounds(nr, nc)) continue;
         if (isWall(grid[nr][nc])) continue;
 
-        Cell nxt    = {nr, nc};
+        Cell nxt = {nr, nc};
         int newCost = curCost + cellCost(grid[nr][nc]);
 
         if (!dist.count(nxt) || newCost < dist[nxt]) {
-          dist[nxt]       = newCost;
-          came_from[nxt]  = cur;
+          dist[nxt] = newCost;
+          came_from[nxt] = cur;
           pq.push({newCost, nxt});
         }
       }
